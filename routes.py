@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, login_user, logout_user
 from models import db, UserModel, Assessments, Feedback, login
 from forms import MentalHealthAssessmentForm, LoginForm, RegistrationForm, FeedbackForm
-from predict import predict_mood, get_eating_disorder_probability_and_techniques
-from utils import get_relaxation_techniques
+from predict import predict_mood
+from utils import get_relaxation_techniques, get_eating_disorder_probability_and_techniques
 from flask_migrate import Migrate
 # import ipdb
 from flask_wtf.csrf import CSRFProtect

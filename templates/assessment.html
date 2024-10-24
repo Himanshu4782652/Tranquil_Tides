@@ -8,28 +8,28 @@
     <p class="text-muted text-center mb-5">
         Please fill in the following information to assess your current mental health status:
     </p>
-    
+
     <form action="{{ url_for('assessment') }}" method="POST" class="needs-validation" novalidate>
         {{ form.hidden_tag() }}
-        
+
         <!-- Anxiety Level Dropdown -->
         <div class="mb-4">
             <label for="anxiety" class="form-label">{{ form.anxiety.label }}</label>
             <div class="input-group">
                 <select name="anxiety" id="anxiety" class="form-select" required>
                     <option value="" disabled selected>Select Anxiety Level</option>
-                    <option value="1">1 - Mild</option>
-                    <option value="2">2 - Mild</option>
-                    <option value="3">3 - Mild</option>
-                    <option value="4">4 - Moderate</option>
-                    <option value="5">5 - Moderate</option>
-                    <option value="6">6 - Moderate</option>
-                    <option value="7">7 - Severe</option>
-                    <option value="8">8 - Severe</option>
-                    <option value="9">9 - Severe</option>
-                    <option value="10">10 - Severe</option>
+                    <option value="1" style="background-color:#d4edda">Level 1 - Mild (Occasional uneasiness)</option>
+                    <option value="2" style="background-color:#c3e6cb">Level 2 - Mild (Feeling tense, but manageable)</option>
+                    <option value="3" style="background-color:#b1dfbb">Level 3 - Mild (Increased tension)</option>
+                    <option value="4" style="background-color:#ffeeba">Level 4 - Moderate (Persistent worry)</option>
+                    <option value="5" style="background-color:#ffeeba">Level 5 - Moderate (Frequent unease, mild panic)</option>
+                    <option value="6" style="background-color:#ffdf7e">Level 6 - Moderate (Anxiety affecting daily tasks)</option>
+                    <option value="7" style="background-color:#f8d7da">Level 7 - Severe (Constant anxiety, difficulty concentrating)</option>
+                    <option value="8" style="background-color:#f5c6cb">Level 8 - Severe (Frequent panic attacks)</option>
+                    <option value="9" style="background-color:#f1b0b7">Level 9 - Severe (Debilitating anxiety)</option>
+                    <option value="10" style="background-color:#f1a7b2">Level 10 - Severe (Full-blown panic)</option>
                 </select>
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your anxiety from 1 (mild) to 10 (severe)">
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your anxiety from 1 (Occasional uneasiness) to 10 (Debilitating)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
@@ -41,18 +41,18 @@
             <div class="input-group">
                 <select name="depression" id="depression" class="form-select" required>
                     <option value="" disabled selected>Select Depression Level</option>
-                    <option value="1">1 - Mild</option>
-                    <option value="2">2 - Mild</option>
-                    <option value="3">3 - Mild</option>
-                    <option value="4">4 - Moderate</option>
-                    <option value="5">5 - Moderate</option>
-                    <option value="6">6 - Moderate</option>
-                    <option value="7">7 - Severe</option>
-                    <option value="8">8 - Severe</option>
-                    <option value="9">9 - Severe</option>
-                    <option value="10">10 - Severe</option>
+                    <option value="1" style="background-color:#d4edda">1 - Mild (Occasional sadness)</option>
+                    <option value="2" style="background-color:#c3e6cb">2 - Mild (Feeling down sometimes)</option>
+                    <option value="3" style="background-color:#b1dfbb">3 - Mild (Low mood, but still manageable)</option>
+                    <option value="4" style="background-color:#ffeeba">4 - Moderate (Sad more often than happy)</option>
+                    <option value="5" style="background-color:#ffeeba">5 - Moderate (Trouble finding joy)</option>
+                    <option value="6" style="background-color:#ffdf7e">6 - Moderate (Persistent low mood)</option>
+                    <option value="7" style="background-color:#f8d7da">7 - Severe (Daily sadness and withdrawal)</option>
+                    <option value="8" style="background-color:#f5c6cb">8 - Severe (Constant low mood, loss of interest)</option>
+                    <option value="9" style="background-color:#f1b0b7">9 - Severe (Despair, difficulty functioning)</option>
+                    <option value="10" style="background-color:#f1a7b2">10 - Severe (Feelings of hopelessness, possible suicidal thoughts)</option>
                 </select>
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your depression from 1 (mild) to 10 (severe)">
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your depression from 1 (Occasional sadness) to 10 (Feelings of hopelessness)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
@@ -64,18 +64,18 @@
             <div class="input-group">
                 <select name="schizophrenia" id="schizophrenia" class="form-select" required>
                     <option value="" disabled selected>Select Schizophrenia Level</option>
-                    <option value="1">1 - Mild</option>
-                    <option value="2">2 - Mild</option>
-                    <option value="3">3 - Mild</option>
-                    <option value="4">4 - Moderate</option>
-                    <option value="5">5 - Moderate</option>
-                    <option value="6">6 - Moderate</option>
-                    <option value="7">7 - Severe</option>
-                    <option value="8">8 - Severe</option>
-                    <option value="9">9 - Severe</option>
-                    <option value="10">10 - Severe</option>
+                    <option value="1" style="background-color:#d4edda">1 - Mild (Mild disorganization)</option>
+                    <option value="2" style="background-color:#c3e6cb">2 - Mild (Occasional hallucinations)</option>
+                    <option value="3" style="background-color:#b1dfbb">3 - Mild (Mild delusions)</option>
+                    <option value="4" style="background-color:#ffeeba">4 - Moderate (Increased hallucinations)</option>
+                    <option value="5" style="background-color:#ffeeba">5 - Moderate (Moderate delusions)</option>
+                    <option value="6" style="background-color:#ffdf7e">6 - Moderate (Disordered thinking)</option>
+                    <option value="7" style="background-color:#f8d7da">7 - Severe (Persistent hallucinations)</option>
+                    <option value="8" style="background-color:#f5c6cb">8 - Severe (Severe delusions)</option>
+                    <option value="9" style="background-color:#f1b0b7">9 - Severe (Paranoia, aggression)</option>
+                    <option value="10" style="background-color:#f1a7b2">10 - Severe (Debilitating psychosis)</option>
                 </select>
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate schizophrenia symptoms from 1 (mild) to 10 (severe)">
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate schizophrenia symptoms from 1 (Mild) to 10 (Debilitating psychosis)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
@@ -87,38 +87,35 @@
             <div class="input-group">
                 <select name="bipolar" id="bipolar" class="form-select" required>
                     <option value="" disabled selected>Select Bipolar Disorder Level</option>
-                    <option value="1">1 - Mild</option>
-                    <option value="2">2 - Mild</option>
-                    <option value="3">3 - Mild</option>
-                    <option value="4">4 - Moderate</option>
-                    <option value="5">5 - Moderate</option>
-                    <option value="6">6 - Moderate</option>
-                    <option value="7">7 - Severe</option>
-                    <option value="8">8 - Severe</option>
-                    <option value="9">9 - Severe</option>
-                    <option value="10">10 - Severe</option>
+                    <option value="1" style="background-color:#d4edda">1 - Mild (Slight mood swings)</option>
+                    <option value="2" style="background-color:#c3e6cb">2 - Mild (Occasional mania)</option>
+                    <option value="3" style="background-color:#b1dfbb">3 - Mild (Occasional depressive episodes)</option>
+                    <option value="4" style="background-color:#ffeeba">4 - Moderate (More frequent mood swings)</option>
+                    <option value="5" style="background-color:#ffeeba">5 - Moderate (Mania lasting longer)</option>
+                    <option value="6" style="background-color:#ffdf7e">6 - Moderate (Hypomanic episodes)</option>
+                    <option value="7" style="background-color:#f8d7da">7 - Severe (Full-blown manic episodes)</option>
+                    <option value="8" style="background-color:#f5c6cb">8 - Severe (Severe depression)</option>
+                    <option value="9" style="background-color:#f1b0b7">9 - Severe (Rapid cycling)</option>
+                    <option value="10" style="background-color:#f1a7b2">10 - Severe (Debilitating mania or depression)</option>
                 </select>
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate bipolar symptoms from 1 (mild) to 10 (severe)">
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate bipolar symptoms from 1 (Mild) to 10 (Debilitating)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
         </div>
 
         <!-- Submit Button -->
-        <div class="d-grid">
-            {{ form.submit(class="btn btn-primary btn-lg") }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit Assessment</button>
         </div>
     </form>
-
-    <p class="text-muted text-center mt-4">
-        By completing this assessment, you will receive personalized relaxation techniques and mood predictions.
-    </p>
 </div>
 
-<!-- JavaScript for Bootstrap tooltips -->
 <script>
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    // Initialize Bootstrap tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+        new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 </script>
-
 {% endblock %}
