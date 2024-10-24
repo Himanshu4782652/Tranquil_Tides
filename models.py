@@ -33,7 +33,7 @@ class Assessments(db.Model):
     schizophrenia = db.Column(db.Integer, nullable=False)
     bipolar = db.Column(db.Integer, nullable=False)
     mood_score = db.Column(db.Float, nullable=False)
-    result = db.Column(db.String(100), nullable=False)
+    # result = db.Column(db.String(100), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 

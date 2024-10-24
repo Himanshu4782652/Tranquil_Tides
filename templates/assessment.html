@@ -12,46 +12,99 @@
     <form action="{{ url_for('assessment') }}" method="POST" class="needs-validation" novalidate>
         {{ form.hidden_tag() }}
         
+        <!-- Anxiety Level Dropdown -->
         <div class="mb-4">
             <label for="anxiety" class="form-label">{{ form.anxiety.label }}</label>
             <div class="input-group">
-                {{ form.anxiety(class="form-control") }}
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your anxiety from 0 (none) to 3 (severe)">
+                <select name="anxiety" id="anxiety" class="form-select" required>
+                    <option value="" disabled selected>Select Anxiety Level</option>
+                    <option value="1">1 - Mild</option>
+                    <option value="2">2 - Mild</option>
+                    <option value="3">3 - Mild</option>
+                    <option value="4">4 - Moderate</option>
+                    <option value="5">5 - Moderate</option>
+                    <option value="6">6 - Moderate</option>
+                    <option value="7">7 - Severe</option>
+                    <option value="8">8 - Severe</option>
+                    <option value="9">9 - Severe</option>
+                    <option value="10">10 - Severe</option>
+                </select>
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your anxiety from 1 (mild) to 10 (severe)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
         </div>
 
+        <!-- Depression Level Dropdown -->
         <div class="mb-4">
             <label for="depression" class="form-label">{{ form.depression.label }}</label>
             <div class="input-group">
-                {{ form.depression(class="form-control") }}
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your depression from 0 (none) to 3 (severe)">
+                <select name="depression" id="depression" class="form-select" required>
+                    <option value="" disabled selected>Select Depression Level</option>
+                    <option value="1">1 - Mild</option>
+                    <option value="2">2 - Mild</option>
+                    <option value="3">3 - Mild</option>
+                    <option value="4">4 - Moderate</option>
+                    <option value="5">5 - Moderate</option>
+                    <option value="6">6 - Moderate</option>
+                    <option value="7">7 - Severe</option>
+                    <option value="8">8 - Severe</option>
+                    <option value="9">9 - Severe</option>
+                    <option value="10">10 - Severe</option>
+                </select>
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate your depression from 1 (mild) to 10 (severe)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
         </div>
 
+        <!-- Schizophrenia Level Dropdown -->
         <div class="mb-4">
             <label for="schizophrenia" class="form-label">{{ form.schizophrenia.label }}</label>
             <div class="input-group">
-                {{ form.schizophrenia(class="form-control") }}
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate schizophrenia symptoms from 0 (none) to 3 (severe)">
+                <select name="schizophrenia" id="schizophrenia" class="form-select" required>
+                    <option value="" disabled selected>Select Schizophrenia Level</option>
+                    <option value="1">1 - Mild</option>
+                    <option value="2">2 - Mild</option>
+                    <option value="3">3 - Mild</option>
+                    <option value="4">4 - Moderate</option>
+                    <option value="5">5 - Moderate</option>
+                    <option value="6">6 - Moderate</option>
+                    <option value="7">7 - Severe</option>
+                    <option value="8">8 - Severe</option>
+                    <option value="9">9 - Severe</option>
+                    <option value="10">10 - Severe</option>
+                </select>
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate schizophrenia symptoms from 1 (mild) to 10 (severe)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
         </div>
 
+        <!-- Bipolar Disorder Level Dropdown -->
         <div class="mb-4">
             <label for="bipolar" class="form-label">{{ form.bipolar.label }}</label>
             <div class="input-group">
-                {{ form.bipolar(class="form-control") }}
-                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate bipolar symptoms from 0 (none) to 3 (severe)">
+                <select name="bipolar" id="bipolar" class="form-select" required>
+                    <option value="" disabled selected>Select Bipolar Disorder Level</option>
+                    <option value="1">1 - Mild</option>
+                    <option value="2">2 - Mild</option>
+                    <option value="3">3 - Mild</option>
+                    <option value="4">4 - Moderate</option>
+                    <option value="5">5 - Moderate</option>
+                    <option value="6">6 - Moderate</option>
+                    <option value="7">7 - Severe</option>
+                    <option value="8">8 - Severe</option>
+                    <option value="9">9 - Severe</option>
+                    <option value="10">10 - Severe</option>
+                </select>
+                <span class="input-group-text" data-bs-toggle="tooltip" title="Rate bipolar symptoms from 1 (mild) to 10 (severe)">
                     <i class="bi bi-info-circle"></i>
                 </span>
             </div>
         </div>
 
+        <!-- Submit Button -->
         <div class="d-grid">
             {{ form.submit(class="btn btn-primary btn-lg") }}
         </div>

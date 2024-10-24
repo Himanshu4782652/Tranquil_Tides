@@ -1,14 +1,15 @@
-{% extends 'base.html' %}
-{% block title %}Dashboard - Tranquil Tides{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Dashboard - Tranquil Tides{% endblock
+%} {% block content %}
 <div class="container-fluid mt-5">
   <div class="row">
     <!-- Welcome Section -->
     <div class="col-12 mb-4">
       <div class="card shadow-sm p-4 bg-primary text-white">
-        <h2>Welcome back, {{ current_username }}!</h2>
-        <p>Your mental well-being is our priority. Check your recent mood trends and insights below.</p>
+        <h2>Welcome back, {{ user }}!</h2>
+        <p>
+          Your mental well-being is our priority. Check your recent mood trends
+          and insights below.
+        </p>
       </div>
     </div>
   </div>
@@ -31,9 +32,13 @@
       <div class="card shadow-sm p-3">
         <div class="card-body text-center">
           <h5 class="card-title text-muted">Next Assessment</h5>
-          <p><strong>Take a new assessment to update your mood insights.</strong></p>
+          <p>
+            <strong>Take a new assessment to update your mood insights.</strong>
+          </p>
           <div class="d-grid gap-2">
-            <a href="{{ url_for('assessment') }}" class="btn btn-primary">Take Assessment</a>
+            <a href="{{ url_for('assessment') }}" class="btn btn-primary"
+              >Take Assessment</a
+            >
           </div>
         </div>
       </div>
@@ -55,7 +60,7 @@
     <div class="col-12 mb-4">
       <div class="card shadow-sm p-4">
         <h5 class="mb-4">Mood Trends Over Time</h5>
-        <div id="mood-trend-chart" style="width:100%;height:400px;"></div>
+        <div id="mood-trend-chart" style="width: 100%; height: 400px"></div>
       </div>
     </div>
   </div>
@@ -65,7 +70,7 @@
     <div class="col-12 mb-4">
       <div class="card shadow-sm p-4">
         <h5 class="mb-4">Negative Mood Trends (Anxiety, Depression)</h5>
-        <div id="negative-mood-chart" style="width:100%;height:400px;"></div>
+        <div id="negative-mood-chart" style="width: 100%; height: 400px"></div>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ from forms import MentalHealthAssessmentForm, LoginForm, RegistrationForm, Feedb
 from predict import predict_mood, get_eating_disorder_probability_and_techniques
 from utils import get_relaxation_techniques
 from flask_migrate import Migrate
+# import ipdb
 from flask_wtf.csrf import CSRFProtect
 
 # Application initialization
@@ -132,6 +133,7 @@ def dashboard():
 
         return render_template(
             "dashboard.html",
+            user=current_user.username,
             assessments=assessments,
             mood_data=mood_data,
             anxiety_data=anxiety_data,

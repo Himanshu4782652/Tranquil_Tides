@@ -17,9 +17,7 @@ def predict_mood(features):
     float: The predicted mood score.
     """
     # The model expects 12 features. We add 8 default features
-    complete_features = (
-        features + [0] * 8
-    )  # Adding 8 zeros
+    complete_features = features + [0] * 8  # Adding 8 zeros
 
     # Convert the features list to a NumPy array
     features_array = np.array([complete_features])
@@ -30,7 +28,7 @@ def predict_mood(features):
     return mood_score
 
 
-def get_eating_disorder_probability_and_techniques(predicted_mood_score):   
+def get_eating_disorder_probability_and_techniques(predicted_mood_score):
     # Define the ranges for mood score to determine eating disorder probability
     if 0 <= predicted_mood_score <= 3:
         eating_disorder_probability = f"{int(predicted_mood_score * 10)}% (Low Risk)"
