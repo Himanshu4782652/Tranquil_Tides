@@ -235,21 +235,29 @@ def profile():
 
         # Handle profile picture upload
         if profile_picture and allowed_file(profile_picture.filename):
-            profile_picture_path = f"static/uploads/{user.id}/"
+            profile_picture_path = f"static/uploads/"
 
             if not os.path.exists(profile_picture_path):
                 os.makedirs(profile_picture_path)
 
-            profile_picture.save(
-                os.path.join(profile_picture_path, profile_picture.filename)
-            )
-            user.profile_picture = f"{user.id}/{profile_picture.filename}"
+            # Save the uploaded picture
+            picture_filename = profile_picture.filename
+            profile_picture.save(os.path.join(profile_picture_path, picture_filename))
+
+            # Update the user profile picture path
+            user.profile_picture = f"{user.id}/{picture_filename}"
 
         # Save changes to the database
-        db.session.commit()
-        flash("Profile updated successfully!", "success")
+        try:
+            db.session.commit()
+            flash("Profile updated successfully!", "success")
+        except Exception as e:
+            db.session.rollback()
+            flash(f"An error occurred: {e}", "error")
+
         return redirect(url_for("profile"))
 
+    # Retrieve user assessments to show in profile page
     user_assessments = Assessments.query.filter_by(user_id=current_user.id).all()
 
     return render_template(

@@ -62,3 +62,5 @@ class FeedbackForm(FlaskForm):
         ],
     )
     submit = SubmitField("Submit Feedback")
+
+
