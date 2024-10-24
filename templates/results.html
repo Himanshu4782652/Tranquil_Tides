@@ -4,21 +4,26 @@
 
 {% block content %}
 <div class="container mt-5">
+    <!-- Title Section -->
     <h1 class="text-center mb-4">Your Predicted Mood Score</h1>
+    
+    <!-- Mood Score Display -->
     <div class="text-center mb-4">
-        <h2 class="text-primary">{{ mood_score }}</h2>
+        <h2 class="display-4 text-primary">{{ mood_score }}</h2>
         <p class="text-muted">Based on your responses, we've calculated your mood score.</p>
     </div>
 
+    <!-- Eating Disorder Probability Section -->
     <div class="text-center mb-4">
-        <h4>Probability of an Eating Disorder: {{ eating_disorder_probability }}</h4>
+        <h4 class="text-warning">Probability of an Eating Disorder: <strong>{{ eating_disorder_probability }}%</strong></h4>
     </div>
 
-    <div class="card result-card text-center mb-4">
+    <!-- Relaxation Techniques Section -->
+    <div class="card shadow-sm result-card text-center mb-4">
         <div class="card-body">
             <h5 class="card-title">Recommended Relaxation Techniques</h5>
             {% if relaxation_techniques %}
-                <div class="list-group">
+                <div class="list-group list-group-flush">
                     {% for technique in relaxation_techniques %}
                         <div class="list-group-item relaxation-technique">{{ technique }}</div>
                     {% endfor %}
@@ -29,16 +34,19 @@
         </div>
     </div>
 
+    <!-- Navigation Buttons Section -->
     <div class="text-center mt-5">
-        <a href="{{ url_for('assessment') }}" class="btn btn-primary btn-lg">Take Another Assessment</a>
-        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-lg">Go to Dashboard</a>
-        <a href="{{ url_for('feedback') }}" class="btn btn-success btn-lg">Give Feedback</a>
+        <a href="{{ url_for('assessment') }}" class="btn btn-primary btn-lg mx-2">Take Another Assessment</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-lg mx-2">Go to Dashboard</a>
+        <a href="{{ url_for('feedback') }}" class="btn btn-success btn-lg mx-2">Give Feedback</a>
     </div>
 
+    <!-- Footer Section -->
     <footer class="text-center mt-5">
         <p class="text-muted">© 2024 Tranquil Tides. All rights reserved.</p>
     </footer>
 </div>
 
+<!-- Bootstrap JS (Ensure it's properly loaded in the base.html) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

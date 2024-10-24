@@ -26,42 +26,73 @@
                     <textarea id="message" name="message" placeholder="Write your message here" aria-label="Your Message" rows="6" required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
 
             <div class="contact-info">
                 <h3>Reach us directly</h3>
-                <p>Email: support@tranquiltides.com</p>
-                <p>Phone: +1 (800) 555-1234</p>
-                <p>Address: 123 Wellness Street, Suite 101, Mindful City</p>
+                <p>Email: <a href="mailto:support@tranquiltides.com">support@tranquiltides.com</a></p>
+                <p>Phone: <a href="tel:+18005551234">+91 (800) 555-1234</a></p>
+                <p>Address: C-735, MahaLaxmi Nagar Complex, IT Park, Indore</p>
             </div>
         </div>
     </section>
 
     <style>
+        /* General Styles */
         .contact-page {
-            padding: 2rem;
+            padding: 3rem 2rem;
+            background-color: #f5f7fa; /* Light background for better contrast */
+            border-radius: 15px; /* Rounded corners for the section */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
             text-align: center;
         }
 
+        /* Header Styles */
         .contact-header {
             margin-bottom: 2rem;
         }
 
+        .contact-header h2 {
+            font-size: 36px;
+            margin-bottom: 0.5rem;
+            color: #333; /* Darker text for better visibility */
+        }
+
+        .contact-header p {
+            font-size: 18px;
+            color: #555; /* Slightly lighter text for the paragraph */
+        }
+
+        /* Container Styles */
         .contact-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .contact-form {
             width: 100%;
+            background-color: #ffffff; /* White background for the form */
+            padding: 2rem;
+            border-radius: 10px; /* Rounded corners for the form */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow effect for the form */
+            margin-bottom: 2rem; /* Space between the form and contact info */
         }
 
+        /* Form Group Styles */
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem; /* Increased spacing between form fields */
+            text-align: left; /* Left-align label and inputs for better readability */
+        }
+
+        .form-group label {
+            font-weight: bold; /* Bold labels for emphasis */
+            color: #4a90e2; /* Color to match the theme */
+            display: block; /* Ensure labels are on their own line */
+            margin-bottom: 0.5rem; /* Space between label and input */
         }
 
         .form-group input,
@@ -70,25 +101,59 @@
             padding: 0.75rem;
             border-radius: 5px;
             border: 1px solid #ccc;
+            font-size: 16px; /* Increase font size for inputs */
+            transition: border-color 0.3s; /* Smooth transition for border color */
         }
 
-        .contact-info {
-            margin-top: 2rem;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #3498db; /* Highlight border on focus */
+            outline: none; /* Remove default outline */
         }
 
+        /* Button Styles */
         .btn {
             padding: 0.75rem 1.5rem;
-            background-color: #3498db;
+            background-color: #3498db; /* Primary button color */
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 18px; /* Larger font size for the button */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #2980b9; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
         }
 
+        /* Contact Info Styles */
+        .contact-info {
+            margin-top: 2rem;
+            text-align: center; /* Centered text for contact info */
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #4a90e2; /* Color to match the theme */
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            line-height: 1.5; /* Improved readability */
+        }
+
+        .contact-info a {
+            color: #3498db; /* Link color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Media Queries for Responsiveness */
         @media (min-width: 768px) {
             .contact-container {
                 flex-direction: row;
@@ -97,12 +162,12 @@
             }
 
             .contact-form {
-                width: 60%;
+                width: 60%; /* Adjust form width on larger screens */
             }
 
             .contact-info {
-                width: 35%;
-                text-align: left;
+                width: 35%; /* Adjust contact info width on larger screens */
+                text-align: left; /* Left-align on larger screens */
             }
         }
     </style>

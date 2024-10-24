@@ -1,5 +1,99 @@
-{% extends 'base.html' %} {% block title %}Dashboard - Tranquil Tides{% endblock
-%} {% block content %}
+{% extends 'base.html' %}
+{% block title %}Dashboard - Tranquil Tides{% endblock %}
+
+{% block content %}
+<style>
+  /* Custom CSS for the dashboard */
+
+  .card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    padding: 2rem;
+  }
+
+  .display-4 {
+    font-weight: 600;
+  }
+
+  h2, h5 {
+    font-weight: 500;
+  }
+
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  /* Welcome section styling */
+  .bg-primary {
+    background: linear-gradient(90deg, rgba(45, 156, 219, 1) 0%, rgba(79, 172, 254, 1) 100%);
+  }
+
+  .text-white p {
+    font-size: 1.1rem;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background-color: #2d9cdb;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #1a7cb8;
+  }
+
+  /* Chart Containers */
+  #mood-trend-chart, #negative-mood-chart {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  /* Table */
+  .table {
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+
+  .table th, .table td {
+    vertical-align: middle;
+  }
+
+  .table thead th {
+    background-color: #343a40;
+    color: white;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .table td strong {
+    color: #343a40;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .display-4 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
 <div class="container-fluid mt-5">
   <div class="row">
     <!-- Welcome Section -->
