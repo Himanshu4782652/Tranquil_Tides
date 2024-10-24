@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+    <section class="about-page">
+        <div class="about-hero">
+            <h2>About Tranquil Tides</h2>
+            <p>Tranquil Tides is your personalized mental wellness companion. Our platform empowers you to take control of your mental health through personalized assessments and tailored insights.</p>
+        </div>
+
+        <div class="mission-section">
+            <h3>Our Mission</h3>
+            <p>At Tranquil Tides, we aim to make mental health support more accessible, personal, and impactful. We believe in using technology to foster mental well-being through data-driven insights and evidence-based relaxation techniques.</p>
+        </div>
+
+        <div class="features-section">
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Self-Assessment Tools:</strong> Evaluate your mental health with ease.</li>
+                <li><strong>Mood Tracking:</strong> Track patterns and gain insights.</li>
+                <li><strong>Relaxation Techniques:</strong> Use guided exercises to reduce stress.</li>
+                <li><strong>Personalized Insights:</strong> Get feedback tailored to your mental health data.</li>
+            </ul>
+        </div>
+
+        <div class="team-section">
+            <h3>Our Team</h3>
+            <p>We are a dedicated team of mental health professionals and tech enthusiasts, all driven by a common goal—to improve lives through technology and innovation.</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="path-to-team-image" alt="Team Member">
+                    <p><strong>Jane Doe</strong> - Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="path-to-team-image" alt="Team Member">
+                    <p><strong>John Smith</strong> - Chief Mental Health Officer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .about-page {
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-hero {
+            margin-bottom: 2rem;
+        }
+
+        .mission-section,
+        .features-section,
+        .team-section {
+            margin: 2rem 0;
+        }
+
+        .features-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .features-section li {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+{% endblock %}

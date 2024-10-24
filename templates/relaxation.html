@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Relaxation Techniques{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Relaxation Techniques</h2>
+        <p class="text-muted">Here are some relaxation techniques tailored for you based on your current mental health status.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h3 class="mb-4 text-primary">Recommended Techniques</h3>
+            
+            {% if relaxation_techniques %}
+                <ul class="list-group">
+                    {% for technique in relaxation_techniques %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ technique }}</span>
+                            <i class="bi bi-heart-fill text-danger"></i>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-danger">No specific techniques recommended at this time.</p>
+            {% endif %}
+
+            <hr class="my-5">
+
+            <section class="additional-tips">
+                <h3 class="text-secondary">Additional Mental Health Tips</h3>
+                <p>Taking care of your mental health is important. Here are some general tips you can follow:</p>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> Practice mindfulness and meditation
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> Get enough sleep each night
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> Engage in physical activity regularly
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> Talk to friends and family for support
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> Maintain a balanced diet
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Optional Bootstrap icons script for the heart and check icons -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+{% endblock %}

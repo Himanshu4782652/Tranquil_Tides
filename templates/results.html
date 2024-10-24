@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Mood Prediction Results{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Your Predicted Mood Score</h1>
+    <div class="text-center mb-4">
+        <h2 class="text-primary">{{ mood_score }}</h2>
+        <p class="text-muted">Based on your responses, we've calculated your mood score.</p>
+    </div>
+
+    <div class="text-center mb-4">
+        <h4>Probability of an Eating Disorder: {{ eating_disorder_probability }}</h4>
+    </div>
+
+    <div class="card result-card text-center mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Recommended Relaxation Techniques</h5>
+            {% if relaxation_techniques %}
+                <div class="list-group">
+                    {% for technique in relaxation_techniques %}
+                        <div class="list-group-item relaxation-technique">{{ technique }}</div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted">No specific techniques available at this time. Please consult a professional for personalized advice.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('assessment') }}" class="btn btn-primary btn-lg">Take Another Assessment</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-lg">Go to Dashboard</a>
+        <a href="{{ url_for('feedback') }}" class="btn btn-success btn-lg">Give Feedback</a>
+    </div>
+
+    <footer class="text-center mt-5">
+        <p class="text-muted">© 2024 Tranquil Tides. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

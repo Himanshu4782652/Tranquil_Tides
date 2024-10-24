@@ -1,0 +1,19 @@
+<form method="POST" action="{{ url_for('assessment') }}">
+    {{ form.hidden_tag() }}
+
+    <!-- Form fields for mental health metrics -->
+    <div>
+        {{ form.anxiety.label }} {{ form.anxiety() }}
+    </div>
+    <div>
+        {{ form.depression.label }} {{ form.depression() }}
+    </div>
+    <div>
+        {{ form.schizophrenia.label }} {{ form.schizophrenia() }}
+    </div>
+    <div>
+        {{ form.bipolar.label }} {{ form.bipolar() }}
+    </div>
+
+    <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Give Us Your Feedback</h1>
+
+    <form method="POST" action="{{ url_for('feedback') }}">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.feedback.label(class="form-label") }}
+            {{ form.feedback(class="form-control", rows=4) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.rating.label(class="form-label") }}
+            {{ form.rating(class="form-control") }}
+        </div>
+
+        <div class="text-center">
+            {{ form.submit(class="btn btn-success btn-lg") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
