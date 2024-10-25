@@ -7,17 +7,8 @@ with open("models/trained_model.pkl", "rb") as f:
 
 
 def predict_mood(features):
-    """
-    Predicts the mood score based on the input features.
-
-    Parameters:
-    features (list): A list containing 4 input features (anxiety, depression, schizophrenia, bipolar).
-
-    Returns:
-    float: The predicted mood score.
-    """
     # The model expects 12 features. We add 8 default features
-    complete_features = features + [0] * 8  # Adding 8 zeros
+    complete_features = features + [5] * 8  # Adding 8 zeros
 
     # Convert the features list to a NumPy array
     features_array = np.array([complete_features])
