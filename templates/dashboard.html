@@ -3,209 +3,161 @@
 
 {% block content %}
 <style>
-  /* Custom CSS for the dashboard */
+  /* Enhanced Dashboard UI */
+  .dashboard-header {
+    background: linear-gradient(120deg, #2d9cdb, #1a7cb8);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+  }
+
+  .dashboard-header h2 {
+    font-weight: 700;
+  }
 
   .card {
-    border-radius: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
-  .card-body {
-    padding: 2rem;
-  }
-
-  .display-4 {
+  .card h5 {
     font-weight: 600;
+    color: #333;
   }
 
-  h2, h5 {
-    font-weight: 500;
-  }
-
-  .container-fluid {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  /* Welcome section styling */
-  .bg-primary {
-    background: linear-gradient(90deg, rgba(45, 156, 219, 1) 0%, rgba(79, 172, 254, 1) 100%);
-  }
-
-  .text-white p {
-    font-size: 1.1rem;
-  }
-
-  /* Buttons */
   .btn-primary {
     background-color: #2d9cdb;
     border: none;
+    border-radius: 8px;
+    font-weight: 600;
   }
 
   .btn-primary:hover {
     background-color: #1a7cb8;
   }
 
-  /* Chart Containers */
-  #mood-trend-chart, #negative-mood-chart {
-    background-color: #f9f9f9;
+  #trendChart, #mood-trend-chart, #negative-mood-chart {
+    background-color: #f1f1f1;
     border-radius: 12px;
-    padding: 20px;
   }
 
-  /* Table */
   .table {
-    margin-top: 20px;
     font-size: 0.9rem;
   }
 
-  .table th, .table td {
-    vertical-align: middle;
-  }
-
   .table thead th {
-    background-color: #343a40;
+    background-color: #2d9cdb;
     color: white;
-    border-bottom: 2px solid #dee2e6;
   }
 
   .table-hover tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.03);
   }
 
-  .table td strong {
-    color: #343a40;
+  .container-fluid {
+    padding: 2rem 3rem;
   }
 
-  /* Responsive Design */
   @media (max-width: 768px) {
-    .card-body {
-      padding: 1.5rem;
-    }
-
-    .display-4 {
-      font-size: 2rem;
+    .container-fluid {
+      padding: 1rem;
     }
   }
 </style>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
   <div class="row">
-    <!-- Welcome Section -->
-    <div class="col-12 mb-4">
-      <div class="card shadow-sm p-4 bg-primary text-white">
-        <h2>Welcome back, {{ user }}!</h2>
-        <p>
-          Your mental well-being is our priority. Check your recent mood trends
-          and insights below.
-        </p>
-      </div>
+    <div class="col-12 mb-4 dashboard-header">
+      <h2>Welcome back, {{ user }}!</h2>
+      <p>Keep track of your mental well-being with your latest insights and trends.</p>
     </div>
   </div>
 
   <!-- Overview Cards -->
   <div class="row">
-    <!-- Latest Mood Card -->
     <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card shadow-sm p-3">
+      <div class="card p-4 shadow-sm">
         <div class="card-body text-center">
-          <h5 class="card-title text-muted">Latest Mood</h5>
-          <h2 class="text-center text-primary display-4">{{ latest_mood }}</h2>
-          <p class="text-muted">Mood has been <strong>{{ trend }}</strong>.</p>
+          <h5 class="card-title">Latest Mood</h5>
+          <h2 class="text-primary">{{ latest_mood }}</h2>
+          <p>Mood has been <strong>{{ trend }}</strong>.</p>
         </div>
       </div>
     </div>
 
-    <!-- Next Assessment Card -->
     <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card shadow-sm p-3">
+      <div class="card p-4 shadow-sm">
         <div class="card-body text-center">
-          <h5 class="card-title text-muted">Next Assessment</h5>
-          <p>
-            <strong>Take a new assessment to update your mood insights.</strong>
-          </p>
-          <div class="d-grid gap-2">
-            <a href="{{ url_for('assessment') }}" class="btn btn-primary"
-              >Take Assessment</a
-            >
-          </div>
+          <h5 class="card-title">Next Assessment</h5>
+          <p>Take a new assessment to update your mood insights.</p>
+          <a href="{{ url_for('assessment') }}" class="btn btn-primary">Take Assessment</a>
         </div>
       </div>
     </div>
 
-    <!-- Recent Trend Card -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card shadow-sm p-3">
+    <div class="col-lg-4 col-md-12 mb-4">
+      <div class="card p-4 shadow-sm">
         <div class="card-body">
-          <h5 class="card-title text-muted">Mood Trend</h5>
-          <canvas id="trendChart" width="100%" height="50px"></canvas>
+          <h5 class="card-title">Mood Trend</h5>
+          <div id="trendChart" style="width: 100%; height: 200px;"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Mood Trends Chart -->
+  <!-- Charts Section -->
   <div class="row">
     <div class="col-12 mb-4">
       <div class="card shadow-sm p-4">
-        <h5 class="mb-4">Mood Trends Over Time</h5>
+        <h5>Mood Trends Over Time</h5>
         <div id="mood-trend-chart" style="width: 100%; height: 400px"></div>
       </div>
     </div>
   </div>
 
-  <!-- Negative Mood Trends Chart -->
   <div class="row">
     <div class="col-12 mb-4">
       <div class="card shadow-sm p-4">
-        <h5 class="mb-4">Negative Mood Trends (Anxiety, Depression)</h5>
+        <h5>Negative Mood Trends (Anxiety, Depression)</h5>
         <div id="negative-mood-chart" style="width: 100%; height: 400px"></div>
       </div>
     </div>
   </div>
 
-  <!-- Recent Assessments Section -->
-  <div class="row">
-    <div class="col-12 mb-4">
-      <div class="card shadow-sm p-4">
-        <h5>Recent Assessments</h5>
-        <div class="table-responsive">
-          <table class="table table-striped table-hover">
-            <thead class="table-dark">
-              <tr>
-                <th>Date</th>
-                <th>Mood</th>
-                <th>Anxiety</th>
-                <th>Depression</th>
-                <th>Schizophrenia</th>
-                <th>Bipolar</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for assessment in assessments %}
-              <tr>
-                <td>{{ assessment.date }}</td>
-                <td>{{ assessment.mood }}</td>
-                <td>{{ assessment.anxiety }}</td>
-                <td>{{ assessment.depression }}</td>
-                <td>{{ assessment.schizophrenia }}</td>
-                <td>{{ assessment.bipolar }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Mood Score</th>
+        <th>Anxiety</th>
+        <th>Depression</th>
+        <th>Schizophrenia</th>
+        <th>Bipolar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for assessment in assessments %}
+      <tr>
+        <td>{{ assessment['dates'] }}</td>
+        <td>{{ assessment['mood_score'] }}</td>
+        <td>{{ assessment['anxiety'] }}</td>
+        <td>{{ assessment['depression'] }}</td>
+        <td>{{ assessment['schizophrenia'] }}</td>
+        <td>{{ assessment['bipolar'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
-<!-- Plotly JS for Charts -->
+
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
   const moodData = {{ mood_data | tojson }};
@@ -214,57 +166,46 @@
   const dates = {{ dates | tojson }};
 
   function renderMoodChart(containerId, moodData, dates) {
-    const trace1 = {
+    Plotly.newPlot(containerId, [{
       x: dates,
       y: moodData,
       mode: 'lines+markers',
-      name: 'Mood',
-      marker: { color: 'blue' },
-      line: { color: 'blue' }
-    };
-
-    const layout = {
+      line: { color: 'blue' },
+      name: 'Mood'
+    }], {
       title: 'Mood Trends Over Time',
       xaxis: { title: 'Date', type: 'category' },
-      yaxis: { title: 'Mood Level', range: [0, 10] },
-      showlegend: true,
-      hovermode: 'x unified'
-    };
-
-    Plotly.newPlot(containerId, [trace1], layout);
+      yaxis: { title: 'Mood Level', range: [0, 10] }
+    });
   }
 
   function renderNegativeMoodChart(containerId, anxietyData, depressionData, dates) {
-    const traceAnxiety = {
-      x: dates,
-      y: anxietyData,
-      mode: 'lines+markers',
-      name: 'Anxiety',
-      marker: { color: 'red' },
-      line: { color: 'red' }
-    };
-
-    const traceDepression = {
-      x: dates,
-      y: depressionData,
-      mode: 'lines+markers',
-      name: 'Depression',
-      marker: { color: 'orange' },
-      line: { color: 'orange' }
-    };
-
-    const layout = {
-      title: 'Anxiety and Depression Trends Over Time',
+    Plotly.newPlot(containerId, [
+      { x: dates, y: anxietyData, mode: 'lines+markers', name: 'Anxiety', line: { color: 'red' } },
+      { x: dates, y: depressionData, mode: 'lines+markers', name: 'Depression', line: { color: 'orange' } }
+    ], {
+      title: 'Anxiety and Depression Trends',
       xaxis: { title: 'Date', type: 'category' },
-      yaxis: { title: 'Severity Level', range: [0, 10] },
-      showlegend: true,
-      hovermode: 'x unified'
-    };
+      yaxis: { title: 'Severity Level', range: [0, 10] }
+    });
+  }
 
-    Plotly.newPlot(containerId, [traceAnxiety, traceDepression], layout);
+  function renderTrendCardChart(containerId, moodData, dates) {
+    Plotly.newPlot(containerId, [{
+      x: dates,
+      y: moodData,
+      type: 'scatter',
+      mode: 'lines',
+      line: { color: 'blue' }
+    }], {
+      xaxis: { visible: false },
+      yaxis: { visible: false },
+      margin: { t: 20, b: 20, l: 20, r: 20 }
+    });
   }
 
   renderMoodChart('mood-trend-chart', moodData, dates);
   renderNegativeMoodChart('negative-mood-chart', anxietyData, depressionData, dates);
+  renderTrendCardChart('trendChart', moodData, dates);
 </script>
 {% endblock %}
