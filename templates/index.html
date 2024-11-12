@@ -54,7 +54,7 @@
         text-align: center;
         height: 80vh; 
         color: white;
-        background: rgba(0, 0, 0, 0.5); /* Added a semi-transparent background for better text visibility */
+        /*background-color: rgba(255, 0, 0, 0.3);  Added a semi-transparent background for better text visibility */
         padding: 20px; /* Added padding for inner spacing */
     }
 
@@ -71,21 +71,29 @@
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
-    .hero-section .btn-get-started {
-        padding: 15px 30px;
-        font-size: 18px;
-        background-color: #4a90e2;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-transform: uppercase;
-        text-decoration: none; /* Ensures the link style is not underlined */
-        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    }
+   .hero-section .btn-get-started {
+    padding: 15px 35px; /* Slightly increased padding for more prominence */
+    font-size: 18px;
+    /*background-color: #4a90e2; /* Keeps the original blue color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners for a more modern look */
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none; /* Ensures the link style is not underlined */
+    transition: all 0.3s ease; /* Smooth transition for multiple effects */
+    
+    /* Shadow and outline to give the button depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    outline: none; /* Remove outline on click */
+    
+    /* Font weight and letter spacing for better readability */
+    font-weight: 600; 
+    letter-spacing: 1.2px;
+}
 
     .hero-section .btn-get-started:hover {
-        background-color: #357abd;
+        background-color: #ffffff;
     }
 
     /* Features Section */
