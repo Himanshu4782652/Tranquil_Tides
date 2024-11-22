@@ -163,8 +163,8 @@ def assessment():
             # Predict mood score using the machine learning model
             mood_score = predict_mood([anxiety, depression, schizophrenia, bipolar])
 
-            # Get eating disorder probability and relaxation techniques
-            eating_disorder_probability, relaxation_techniques = (
+            # Get eating disorder stats and relaxation techniques
+            normal_rate, eating_disorder_probability, relaxation_techniques = (
                 get_eating_disorder_probability_and_techniques(mood_score)
             )
 
@@ -182,21 +182,25 @@ def assessment():
             db.session.commit()
             flash("Assessment saved successfully.", "success")
 
-            # Render results page with mood score, probability, and relaxation techniques
+            # Render results page with all required data
             return render_template(
                 "results.html",
                 mood_score=mood_score,
+                normal_rate=normal_rate,
                 eating_disorder_probability=eating_disorder_probability,
                 relaxation_techniques=relaxation_techniques,
             )
         except Exception as e:
             db.session.rollback()
-            flash(f"Error processing assessment: {str(e)}", "error")
+            app.logger.error(f"Error processing assessment: {e}")
+            flash(
+                "An error occurred while processing your assessment. Please try again.",
+                "error",
+            )
             return redirect(url_for("assessment"))
 
-    else:
-        if request.method == "POST":
-            flash("Please correct the errors in the form.", "error")
+    elif request.method == "POST":
+        flash("Please correct the errors in the form.", "error")
 
     return render_template("assessment.html", form=form)
 

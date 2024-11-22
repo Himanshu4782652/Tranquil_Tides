@@ -8,7 +8,7 @@ with open("models/trained_model.pkl", "rb") as f:
 
 def predict_mood(features):
     # The model expects 12 features. We add 8 default features
-    complete_features = features + [4] * 8  # Adding 8 zeros
+    complete_features = features + [4] * 8  # Adding 8 deault 4
 
     # Convert the features list to a NumPy array
     features_array = np.array([complete_features])

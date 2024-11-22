@@ -10,9 +10,14 @@
     <!-- Mood Score Display -->
     <div class="text-center mb-4">
         <h2 class="display-4 text-primary">{{ mood_score }}</h2>
-        <p class="text-muted">Based on your responses, we've calculated your mood score.</p>
+        <p class="text-muted">Based on your inputs, we've predicted your mood score.</p>
     </div>
 
+    <!-- Normal Eating Disorder Rate -->
+    <div class="text-center mb-4">
+        <h5 class="text-info">Normal Eating Disorder Rate: <strong>{{ normal_rate }}</strong></h5>
+    </div>
+    
     <!-- Eating Disorder Probability Section -->
     <div class="text-center mb-4">
         <h4 class="text-warning">Probability of an Eating Disorder: <strong>{{ eating_disorder_probability }}%</strong></h4>
