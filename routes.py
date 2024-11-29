@@ -289,5 +289,19 @@ def feedback():
     return render_template("feedback.html", form=form)
 
 
+@app.route("/clear_assessments", methods=["POST"])
+@login_required
+def clear_assessments():
+    try:
+        # Delete all assessments for the current user
+        Assessments.query.filter_by(user_id=current_user.id).delete()
+        db.session.commit()
+        flash("All assessments cleared successfully.", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error clearing assessments: {str(e)}", "error")
+    return redirect(url_for("dashboard"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
