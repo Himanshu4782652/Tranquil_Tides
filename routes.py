@@ -6,7 +6,6 @@ from forms import MentalHealthAssessmentForm, LoginForm, RegistrationForm, Feedb
 from predict import predict_mood
 from utils import get_relaxation_techniques, get_eating_disorder_probability_and_techniques
 from flask_migrate import Migrate
-# import ipdb
 from flask_wtf.csrf import CSRFProtect
 
 # Application initialization
@@ -17,11 +16,11 @@ app.secret_key = os.environ.get("SECRET_KEY", "f9bf78b9a18ce6d46a0cd2b0b86dda")
 
 # CSRF Protection
 csrf = CSRFProtect(app)
-app.config["WTF_CSRF_ENABLED"] = True
+app.config["WTF_CSRF_ENABLED"] = False
 
 # Database configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "sqlite:////home/aman/Desktop/Tranquil-Tides/instance/data.db"  # Ensure path is correct
+    "sqlite:////home/aman/Desktop/Tranquil-Tides/instance/data.db"  
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
